@@ -13,9 +13,14 @@ function App() {
   return (
     <div className="App">
       <h1>LAB | React IronNutrition</h1>
-      <FoodBox food={mockFood} />
+
+      {foodsJson.map((foodItem, index) => (
+        <FoodBox key={index} food={foodItem} />
+      ))}
     </div>
   );
 }
 
 export default App;
+
+
