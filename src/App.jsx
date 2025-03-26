@@ -1,26 +1,30 @@
 import "./App.css";
+import { useState } from "react";
 import foodsJson from "./foods.json";
-import FoodBox from "./components/FoodBox";
+import FoodBox from './components/FoodBox';
 
 function App() {
-  const mockFood = {
-    name: "Orange",
-    calories: 85,
-    image: "https://i.imgur.com/abKGOcv.jpg",
-    servings: 1,
+  const [foods, setFoods] = useState(foodsJson);
+
+  const deleteFood = (foodName) => {
+    const filteredFoods = foods.filter((food) => food.name !== foodName);
+    setFoods(filteredFoods);
   };
 
   return (
     <div className="App">
       <h1>LAB | React IronNutrition</h1>
 
-      {foodsJson.map((foodItem, index) => (
-        <FoodBox key={index} food={foodItem} />
+      {foods.map((foodItem) => (
+        <FoodBox
+          key={foodItem.name}
+          food={foodItem}
+          onDelete={deleteFood}
+        />
       ))}
     </div>
   );
 }
 
 export default App;
-
 

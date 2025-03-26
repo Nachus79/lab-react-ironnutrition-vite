@@ -1,7 +1,7 @@
 // Your code here
 import React from 'react';
 
-function FoodBox({ food }) {
+function FoodBox({ food, onDelete }) {
   const { name, calories, image, servings } = food;
 
   return (
@@ -17,9 +17,10 @@ function FoodBox({ food }) {
         <b>Total Calories: {servings * calories}</b> kcal
       </p>
 
-      <button>Delete</button>
+      <button onClick={() => onDelete(name)}>Delete</button>
     </div>
   );
 }
 
 export default FoodBox;
+
